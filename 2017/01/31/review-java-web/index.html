@@ -14,10 +14,12 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/31/review-java-web/index.html">
 <meta property="og:site_name" content="GinPonson的博客">
 <meta property="og:description" content="上一篇回顾完java，这篇来回顾web的知识点。">
-<meta property="og:updated_time" content="2017-02-01T12:17:58.430Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20140818215211109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHk2Njg4Xw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2017-02-22T11:03:29.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识点回顾-Web篇">
 <meta name="twitter:description" content="上一篇回顾完java，这篇来回顾web的知识点。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140818215211109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHk2Njg4Xw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
   
     <link rel="alternative" href="/atom.xml" title="GinPonson的博客" type="application/atom+xml">
   
@@ -222,6 +224,9 @@
 <li>filter的原理？</li>
 <li>filter涉及的设计模式？</li>
 </ul>
+<p>1、servlet和filter的区别？</p>
+<p>1、servlet可以产生一个请求或者响应，filter只能修改对某一资源的请求，或者修改从某一的响应<br>2、生命周期：<br>servlet：<br>如果有load on startup，那么容器初始化的时候会按照值从小到大加载。<br>当一个请求映射到对应的地址后，如果容器没有加载servlet，则加载servlet。<br>Servlet容器创建一个Servlet实例并且调用Servlet的init()方法进行初始化，调用init()。<br>根据method由doservice分配到doGet或者doPost<br>服务器停止后销毁。</p>
+<p>filter:<br>容器初始化的时候初始化。<br>服务器停止后销毁，晚于Servlet销毁之后<br><img src="http://img.blog.csdn.net/20140818215211109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHk2Njg4Xw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="aa"></p>
 <h3 id="5、服务器"><a href="#5、服务器" class="headerlink" title="5、服务器"></a>5、服务器</h3><h4 id="5-1、nginx"><a href="#5-1、nginx" class="headerlink" title="5.1、nginx"></a>5.1、nginx</h4><ul>
 <li>什么是nginx？nginx和Apache相比怎么样？</li>
 <li>nginx能干什么？</li>
@@ -327,8 +332,8 @@
     </a>
   
   
-    <a href="/2017/01/29/review-knowledge/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">知识点回顾-Java篇</div>
+    <a href="/2017/01/30/review-thread/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">知识点回顾-多线程篇</div>
       <i class="icon-circle-right"></i>
     </a>
   
