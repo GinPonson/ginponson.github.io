@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现连接不上的错误：WebSocket connection to &amp;#39;ws://localhost:8080/project/marco&amp;#39; failed: Error during WebSocket handshake: Unexpected response code: 404">
+<meta name="description" content="在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现404的错误。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring websocket浏览器连接时出现404错误">
 <meta property="og:url" content="http://yoursite.com/2017/02/09/spring-websocket-404/index.html">
-<meta property="og:site_name" content="OutOfMemory">
-<meta property="og:description" content="在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现连接不上的错误：WebSocket connection to &amp;#39;ws://localhost:8080/project/marco&amp;#39; failed: Error during WebSocket handshake: Unexpected response code: 404">
-<meta property="og:updated_time" content="2017-02-20T14:42:24.360Z">
+<meta property="og:site_name" content="ln -s to memory">
+<meta property="og:description" content="在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现404的错误。">
+<meta property="og:updated_time" content="2017-04-08T02:09:12.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring websocket浏览器连接时出现404错误">
-<meta name="twitter:description" content="在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现连接不上的错误：WebSocket connection to &amp;#39;ws://localhost:8080/project/marco&amp;#39; failed: Error during WebSocket handshake: Unexpected response code: 404">
+<meta name="twitter:description" content="在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现404的错误。">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title> spring websocket浏览器连接时出现404错误 | OutOfMemory </title>
+  <title> spring websocket浏览器连接时出现404错误 | ln -s to memory </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +164,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">OutOfMemory</span>
+        <span class="site-title">ln -s to memory</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -256,7 +256,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OutOfMemory">
+      <meta itemprop="name" content="ln -s to memory">
     </span>
 
     
@@ -329,26 +329,24 @@
       
 
       
-        <p>在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现连接不上的错误：<br><code>WebSocket connection to &#39;ws://localhost:8080/project/marco&#39; failed: Error during WebSocket handshake: Unexpected response code: 404</code></p>
+        <p>在用websocket做一个简单的数据导入页面同步显示后台进度功能的时候，浏览器出现404的错误。</p>
 <a id="more"></a>
-<p>网上有很种导致404的情况，但是都没有用，我在这里记录一下我的情况。<br>以下是我的解决过程，要看解决办法的请直接到最后。<br>spring-websocket.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">websocket:handlers</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">websocket:mapping</span> <span class="attr">handler</span>=<span class="string">"messageHandler"</span> <span class="attr">path</span>=<span class="string">"/marco"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">websocket:handshake-interceptors</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.project.websocket.HandshakeInterceptor"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">websocket:handshake-interceptors</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">websocket:handlers</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageHandler"</span> <span class="attr">class</span>=<span class="string">"com.project.websocket.MessageHandler"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
-<p>查看打印的INFO级别日志，根据spring的启动信息我们可以看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2017-02-09 21:57:40,559 INFO  [springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/marco] onto handler of type [class org.springframework.web.socket.server.support.WebSocketHttpRequestHandler]</div></pre></td></tr></table></figure></p>
-<p>WebSocketHttpRequestHandler通过SimpleUrlHandlerMapping注册了/marco地址，那应该是没错的啊，难道是客户端js的错误？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> websocket = <span class="keyword">new</span> WebSocket(<span class="string">'ws://'</span> + <span class="built_in">window</span>.location.host + <span class="string">'/project/marco'</span>);</div></pre></td></tr></table></figure></p>
-<p>地址好像也没错啊，和Spring in Action4里面的例子一样的啊。<br>为什么地址没有映射到/marco？先看看DispatchServlet的handlerMappings有没有/marco先吧。<br>断点DispatchServlet的doDispatch()方法，随便发起一个请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doDispatch</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    ......</div><div class="line">	<span class="comment">// Determine handler for the current request.</span></div><div class="line">	mappedHandler = getHandler(processedRequest);</div><div class="line">	<span class="keyword">if</span> (mappedHandler == <span class="keyword">null</span> || mappedHandler.getHandler() == <span class="keyword">null</span>) &#123;</div><div class="line">		noHandlerFound(processedRequest, response);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">    ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WebSocket connection to <span class="string">'ws://localhost:8080/project/marco'</span> failed: <span class="built_in">Error</span> during WebSocket handshake: Unexpected response code: <span class="number">404</span></div></pre></td></tr></table></figure>
+<p>网上有很种导致404的情况，但是都没有用，我在这里记录一下我的情况。<br>spring-websocket.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">websocket:handlers</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">websocket:mapping</span> <span class="attr">handler</span>=<span class="string">"messageHandler"</span> <span class="attr">path</span>=<span class="string">"/marco"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">websocket:handshake-interceptors</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.project.websocket.HandshakeInterceptor"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">websocket:handshake-interceptors</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">websocket:handlers</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageHandler"</span> <span class="attr">class</span>=<span class="string">"com.project.websocket.MessageHandler"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>查看打印的INFO级别日志，根据spring的启动信息我们可以看到：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2017-02-09 21:57:40,559 INFO  [springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/marco] onto handler of type [class org.springframework.web.socket.server.support.WebSocketHttpRequestHandler]</div></pre></td></tr></table></figure></p>
+<p>WebSocketHttpRequestHandler通过SimpleUrlHandlerMapping注册了<code>/marco</code>地址，那应该是没错的啊，难道是客户端js的错误？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> websocket = <span class="keyword">new</span> WebSocket(<span class="string">'ws://'</span> + <span class="built_in">window</span>.location.host + <span class="string">'/project/marco'</span>);</div></pre></td></tr></table></figure></p>
+<p>地址好像也没错啊，和Spring in Action4里面的例子一样的啊。为什么地址没有映射到<code>/marco</code>？先看看DispatchServlet的handlerMappings有没有<code>/marco</code>先吧。<br>断点DispatchServlet的doDispatch()方法，随便发起一个请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doDispatch</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    ......</div><div class="line">	<span class="comment">// Determine handler for the current request.</span></div><div class="line">	mappedHandler = getHandler(processedRequest);</div><div class="line">	<span class="keyword">if</span> (mappedHandler == <span class="keyword">null</span> || mappedHandler.getHandler() == <span class="keyword">null</span>) &#123;</div><div class="line">		noHandlerFound(processedRequest, response);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">    ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>进入getHandler(processedRequest)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> HandlerExecutionChain <span class="title">getHandler</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">	<span class="keyword">for</span> (HandlerMapping hm : <span class="keyword">this</span>.handlerMappings) &#123;</div><div class="line">		<span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</div><div class="line">			logger.trace(</div><div class="line">					<span class="string">"Testing handler map ["</span> + hm + <span class="string">"] in DispatcherServlet with name '"</span> + getServletName() + <span class="string">"'"</span>);</div><div class="line">		&#125;</div><div class="line">		HandlerExecutionChain handler = hm.getHandler(request);</div><div class="line">		<span class="keyword">if</span> (handler != <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">return</span> handler;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们看一下handlerMappings里面的内容，不知道你们有没有找到/marco，反正我是没找到。<br>言下之意，/marco没注册到？</p>
-<p>没办法，我们断点SimpleUrlHandlerMapping的registerHandlers()方法和DispatchServlet的initHandlerMappings()方法。</p>
-<p>我们看到SimpleUrlHandlerMapping的registerHandlers()先被执行。</p>
-<p>最后退出registerHandlers()方法，F6一路下来，从WebApplicationObjectSupport的initApplicationContext()方法中可以看到：</p>
+<p>我们看一下handlerMappings里面的内容，不知道你们有没有找到<code>/marco</code>，反正我是没找到。<br>言下之意，<code>/marco</code>没注册到？<br>没办法，我们断点SimpleUrlHandlerMapping的registerHandlers()方法和DispatchServlet的initHandlerMappings()方法。<br>我们看到SimpleUrlHandlerMapping的registerHandlers()先被执行。<br>最后退出registerHandlers()方法，F6一路下来，从WebApplicationObjectSupport的initApplicationContext()方法中可以看到：</p>
 <ul>
-<li>context.beanFactory.beanDefintionMap中包含<code>[org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0-&gt;RootBeanDefintion]</code></li>
+<li><code>[org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0-&gt;RootBeanDefintion]</code>包含在context.beanFactory.beanDefintionMap中</li>
 <li>而且context.beanFactory.singletonObjects也包含了注册了<code>/marco</code>的SimpleUrlHandlerMapping实例。</li>
 <li>此时的context.configLocations是<code>classpath:spring-context.xml</code>。</li>
 </ul>
 <p>DispatchServlet的initHandlerMappings()后被执行，我们来看这段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Find all HandlerMappings in the ApplicationContext, including ancestor contexts.</span></div><div class="line">Map&lt;String, HandlerMapping&gt; matchingBeans =</div><div class="line">    BeanFactoryUtils.beansOfTypeIncludingAncestors(context, HandlerMapping.class, <span class="keyword">true</span>, <span class="keyword">false</span>);</div></pre></td></tr></table></figure></p>
 <p>然而，在matchingBeans没有找到我们要的注册了<code>/marco</code>的SimpleUrlHandlerMapping。此时的context.configLocations是<code>classpath*:spring-servlet.xml</code></p>
 <p>来到这里，你大概知道就是你的spring-websocket.xml放错位置啦。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>如果你的web.xml分开加载spring-context和spring-servlet的话，请将spring-websocket的资源文件放到spring-servlet上加载。<br>注意：在spring-context加载的时候，你的messageHandler应该是还没有初始化，请不要注入到某个server上。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>如果你的web.xml分开加载spring-context和spring-servlet的话，请将spring-websocket的资源文件放到spring-servlet上加载。<br>注意：在spring-context加载的时候，你的messageHandler应该是还没有初始化，请不要注入到某个service上。</p>
 
       
     </div>
@@ -402,6 +400,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/08/Selenium-HtmlUnit-get-js-render-page/" rel="prev" title="Selenium/HtmlUnit设置代理获取JS生成的网页">
+                Selenium/HtmlUnit设置代理获取JS生成的网页 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -477,7 +479,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -490,7 +492,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
